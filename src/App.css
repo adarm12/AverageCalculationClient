@@ -13,8 +13,33 @@
   }
 }
 
+header{
+  font-size: 50px;
+  margin-bottom: 5px;
+}
+
+input {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+button {
+  font-size: 20px;
+  margin-bottom: 5px;
+  width: 100px;
+}
+
+table{
+  display: table;
+  border-collapse: collapse;
+}
+
+tr,td{
+border: 2px solid black;
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color: #5f5065;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,6 +48,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 
 .App-link {
   color: #61dafb;
