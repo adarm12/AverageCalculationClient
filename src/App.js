@@ -2,6 +2,7 @@ import React from "react";
 import './App.css';
 import SignUp from "./SignUp";
 import Login from "./LogIn";
+import {FaCalculator} from "react-icons/fa";
 
 class App extends React.Component {
     state = {
@@ -25,7 +26,9 @@ class App extends React.Component {
                 {this.state.showButtons ?
                     <div className="App-header">
                         <div>
-                            <header>Welcome To Average Calculation</header>
+                            <header>Welcome To Average Calculation
+                                <FaCalculator/>
+                            </header>
                         </div>
                         <div>
                             <button onClick={() =>

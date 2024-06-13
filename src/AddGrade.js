@@ -21,31 +21,32 @@ class AddGrade extends React.Component {
                 this.setState({addGradeSuccess: true});
             }
             this.setState({errorCode: response.data.errorCode});
-        })
+        }
+    )
 
     showErrorCode = () => {
         let errorMessage = "";
         switch (this.state.errorCode) {
-            case 10:
-                errorMessage = "No course name";
-                break;
-            case 9:
-                errorMessage = "No course grade";
+            case 0:
+                errorMessage = "The grade added successfully";
                 break;
             case 8:
                 errorMessage = "No course points";
                 break;
-            case 12:
-                errorMessage = "Course Points must be 1-5";
+            case 9:
+                errorMessage = "No course grade";
+                break;
+            case 10:
+                errorMessage = "No course name";
                 break;
             case 11:
                 errorMessage = "Course grade must be 0-100";
                 break;
+            case 12:
+                errorMessage = "Course Points must be 1-5";
+                break;
             case 16:
                 errorMessage = "Course name is taken";
-                break;
-            case 0:
-                errorMessage = "The grade added successfully";
                 break;
         }
         return errorMessage;
@@ -74,17 +75,17 @@ class AddGrade extends React.Component {
                         />
                     </div>
                     <div>
-                        <input placeholder={"Enter course points"}
-                               value={this.state.coursePoints}
-                               type={"number"}
-                               onChange={event => this.onChaneValue("coursePoints", event)}
-                        />
-                    </div>
-                    <div>
                         <input placeholder={"Enter grade"}
                                value={this.state.courseGrade}
                                type={"number"}
                                onChange={event => this.onChaneValue("courseGrade", event)}
+                        />
+                    </div>
+                    <div>
+                        <input placeholder={"Enter course points"}
+                               value={this.state.coursePoints}
+                               type={"number"}
+                               onChange={event => this.onChaneValue("coursePoints", event)}
                         />
                     </div>
                     {this.showErrorCode()}

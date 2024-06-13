@@ -92,13 +92,13 @@ class Login extends React.Component {
                                 <div className="App-header">
                                     <header>Welcome {this.state.data.username}</header>
                                     <div>
-                                        <button style={{width: 200}}
+                                        <button style={{width: 180}}
                                                 onClick={() =>
                                                     this.setState({addGrade: true})}>Add grade
                                         </button>
                                     </div>
                                     <div>
-                                        <button style={{width: 200}}
+                                        <button style={{width: 180}}
                                                 onClick={() =>
                                                     this.setState({showGrades: true})}>Show my grades
                                         </button>

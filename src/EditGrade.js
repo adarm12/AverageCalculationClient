@@ -3,13 +3,12 @@ import {sendApiPostRequest} from "./ApiRequests";
 
 class EditGrade extends React.Component {
     state = {
-        courseName: this.props.stateFromShow.courseName,
-        courseGrade: this.props.stateFromShow.courseGrade,
-        coursePoints: this.props.stateFromShow.coursePoints,
-        addGradeSuccess: false,
+        courseName: null,
+        courseGrade: null,
+        coursePoints: null,
+        editGradeSuccess: false,
         errorCode: "",
     }
-
 
     editGrade = () => sendApiPostRequest("http://localhost:9124/edit-grade", {
             oldCourseName: this.props.stateFromShow.courseName,
@@ -20,7 +19,7 @@ class EditGrade extends React.Component {
         },
         (response) => {
             if (response.data.success) {
-                this.setState({addGradeSuccess: true});
+                this.setState({editGradeSuccess: true});
             }
             this.setState({errorCode: response.data.errorCode});
         }
@@ -29,29 +28,29 @@ class EditGrade extends React.Component {
     showErrorCode = () => {
         let errorMessage = "";
         switch (this.state.errorCode) {
-            case 10:
-                errorMessage = "No course name";
-                break;
-            case 9:
-                errorMessage = "No course grade";
+            case 0:
+                errorMessage = "The grade changed successfully ";
                 break;
             case 8:
                 errorMessage = "No course points";
                 break;
-            case 12:
-                errorMessage = "Course Points must be 1-5";
+            case 9:
+                errorMessage = "No course grade";
+                break;
+            case 10:
+                errorMessage = "No course name";
                 break;
             case 11:
                 errorMessage = "Course grade must be 0-100";
+                break;
+            case 12:
+                errorMessage = "Course Points must be 1-5";
                 break;
             case 15:
                 errorMessage = "No such grade";
                 break;
             case 16:
                 errorMessage = "Course name is taken";
-                break;
-            case 0:
-                errorMessage = "The grade changed successfully ";
                 break;
         }
         return errorMessage;
@@ -79,17 +78,17 @@ class EditGrade extends React.Component {
                         />
                     </div>
                     <div>
-                        <input placeholder={"Enter course points"}
-                               value={this.state.coursePoints}
-                               type={"number"}
-                               onChange={event => this.onChaneValue("coursePoints", event)}
-                        />
-                    </div>
-                    <div>
                         <input placeholder={"Enter grade"}
                                value={this.state.courseGrade}
                                type={"number"}
                                onChange={event => this.onChaneValue("courseGrade", event)}
+                        />
+                    </div>
+                    <div>
+                        <input placeholder={"Enter course points"}
+                               value={this.state.coursePoints}
+                               type={"number"}
+                               onChange={event => this.onChaneValue("coursePoints", event)}
                         />
                     </div>
                     {this.showErrorCode()}
